@@ -1,5 +1,5 @@
 
-##Question 1
+## Question 1
 
 Terminal commands:
 
@@ -8,10 +8,10 @@ docker run -it python:3.12.8 bash
 pip --version
 ```
 
-##Question 2
+## Question 2
 pgAdmin connects to either postgres or db hostname on port 5432
 
-##Prepare Postgres
+## Prepare Postgres
 
 Build pipeline image from Dockerfile
 ```bash
@@ -41,7 +41,7 @@ import_taxi_data:v1 \
 
 
 
-##Question 3
+## Question 3
 SQL Query
 ```sql
 SELECT SUM(case when trip_distance <= 1.0 then 1 else 0 end) as miles_lt1
@@ -54,14 +54,14 @@ WHERE cast(lpep_pickup_datetime as date) >= '2019-10-01'
 AND cast(lpep_dropoff_datetime as date) < '2019-11-01';
 ```
 
-##Question 4
+## Question 4
 SQL Query
 ```sql
 select lpep_pickup_datetime from green_taxi_tripdata
 where trip_distance = (SELECT MAX(trip_distance) FROM green_taxi_tripdata);
 ```
 
-##Question 5
+## Question 5
 SQL Query
 ```sql
 SELECT tz."Zone" as pickup_location, sum(gt.total_amount) as total_amount from green_taxi_tripdata gt
@@ -73,7 +73,7 @@ HAVING sum(gt.total_amount) > 13000
 ORDER BY total_amount desc;
 ```
 
-##Question 6
+## Question 6
 SQL Query
 ```sql
 SELECT dz."Zone" as drop_zone, max(td.tip_amount) as max_tip FROM green_taxi_tripdata td
