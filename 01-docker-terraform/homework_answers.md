@@ -43,6 +43,7 @@ import_taxi_data:v1 \
 
 ## Question 3
 SQL Query
+Trip Segmentation Count
 ```sql
 SELECT SUM(case when trip_distance <= 1.0 then 1 else 0 end) as miles_lt1
 	  ,SUM(case when trip_distance > 1.0 AND trip_distance <= 3.0 then 1 else 0 end) as miles_1_3 
@@ -56,6 +57,7 @@ AND cast(lpep_dropoff_datetime as date) < '2019-11-01';
 
 ## Question 4
 SQL Query
+Longest Trip
 ```sql
 select lpep_pickup_datetime from green_taxi_tripdata
 where trip_distance = (SELECT MAX(trip_distance) FROM green_taxi_tripdata);
@@ -63,6 +65,7 @@ where trip_distance = (SELECT MAX(trip_distance) FROM green_taxi_tripdata);
 
 ## Question 5
 SQL Query
+Biggest pickup zones
 ```sql
 SELECT tz."Zone" as pickup_location, sum(gt.total_amount) as total_amount from green_taxi_tripdata gt
 INNER JOIN taxi_zones tz
@@ -75,6 +78,7 @@ ORDER BY total_amount desc;
 
 ## Question 6
 SQL Query
+Largest tip
 ```sql
 SELECT dz."Zone" as drop_zone, max(td.tip_amount) as max_tip FROM green_taxi_tripdata td
 INNER JOIN taxi_zones pz
