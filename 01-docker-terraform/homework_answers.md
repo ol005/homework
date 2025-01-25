@@ -86,3 +86,23 @@ AND pz."Zone" = 'East Harlem North'
 GROUP BY dz."Zone"
 ORDER BY max_tip desc;
 ```
+
+## Terraform Section
+Terraform
+Set the env var and activate gcp service account creds
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS=~/.gc/dataeng.json
+```
+
+```bash
+gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS
+```
+
+terraform order of operations:
+```bash
+cd terraform
+terraform init
+terraform plan
+terraform apply
+terraform destroy
+```
